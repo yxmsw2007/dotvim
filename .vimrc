@@ -133,6 +133,29 @@ endif
 " 使用Vundle来管理插件，这个必须要有。
 Plugin 'gmarik/Vundle.vim'
 
+" -----------------------------------------------------------------------------
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+" Plugin 'tpope/vim-fugitive'
+
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+
+" Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+" Avoid a name conflict with L9
+" Plugin 'user/L9', {'name': 'newL9'}
+" -----------------------------------------------------------------------------
+
 " 以下为要安装或更新的插件，不同仓库都有（具体书写规范请参考帮助）
 Plugin 'a.vim'
 Plugin 'Align'
@@ -171,7 +194,9 @@ Plugin 'grep.vim'
 "Plugin 'MarcWeber/vim-addon-mw-utils'
 "Plugin 'tomtom/tlib_vim'
 "Plugin 'honza/vim-snippets'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'code_complete'
+"Plugin 'cca.vim'
 
 "vundle结束
 call vundle#end()
@@ -266,8 +291,7 @@ vmap <leader>v "yp
 nmap <leader>a ggvG$
 
 "<leader>空格快速保存
-"nmap <leader>s :w<cr>
-nmap <leader><space> :w<cr>
+nmap <leader>s :w<cr>
 
 "让退格，空格，上下箭头遇到行首行尾时自动移到下一行（包括insert模式）
 set whichwrap=b,s,<,>,[,] 
@@ -678,6 +702,74 @@ function! ViewInBrowser(name)
 endfunction
 
 " -----------------------------------------------------------------------------
+"  < 自动添加作者信息 >
+" -----------------------------------------------------------------------------
+nmap author ms:call AddAuthor()<cr>'s
+function AddAuthor()
+
+        let n=1
+
+        while n < 5
+
+                let line = getline(n)
+
+                if line =~'^\s*\*\s*\S*Last\s*modified\s*:\s*\S*.*$'
+
+                        call UpdateTitle()
+
+                        return
+
+                endif
+
+                let n = n + 1
+
+        endwhile
+
+        call AddTitle()
+
+endfunction
+
+function UpdateTitle()
+
+        normal m'
+
+        execute '/* Last modified\s*:/s@:.*$@\=strftime(": %Y-%m-%d %H:%M")@'
+
+        normal "
+
+        normal mk
+
+        execute '/* Filename\s*:/s@:.*$@\=": ".expand("%:t")@'
+
+        execute "noh"
+
+        normal 'k
+
+        echohl WarningMsg | echo "Successful in updating the copy right." | echohl None
+
+endfunction
+
+function AddTitle()
+
+        call append(0,"/**********************************************************")
+
+        call append(1," * Author        : yxmsw2007")
+
+        call append(2," * Email         : yxmsw2007@gmail.com")
+
+        call append(3," * Last modified : ".strftime("%Y-%m-%d %H:%M"))
+
+        call append(4," * Filename      : ".expand("%:t"))
+
+        call append(5," * Description   : ")
+
+        call append(6," * *******************************************************/")
+
+        echohl WarningMsg | echo "Successful in adding the copyright." | echohl None
+
+endfunction
+
+" -----------------------------------------------------------------------------
 "  < 其它配置 >
 " -----------------------------------------------------------------------------
 set nowritebackup
@@ -702,7 +794,6 @@ set ttyfast
 " -----------------------------------------------------------------------------
 "  < omnifunc 插件配置 >
 " -----------------------------------------------------------------------------
-"omnifunc配置
 setlocal completefunc=javacomplete#CompleteParamsInfo
 autocmd FileType c set omnifunc=ccomplete#Complete
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
@@ -901,7 +992,29 @@ nmap nt :NERDTreeToggle<CR>
 " ctags -R --c++-kinds=+p --fields=+iaS --extra=+q
 " 我使用上面的参数生成标签后，对函数使用跳转时会出现多个选择
 " 所以我就将--c++-kinds=+p参数给去掉了，如果大侠有什么其它解决方法希望不要保留呀
-set completeopt=longest,menu                        "关闭预览窗口
+" set completeopt=longest,menu                        "关闭预览窗口
+" let OmniCpp_MayCompleteDot = 1 " autocomplete with .  
+" let OmniCpp_MayCompleteArrow = 1 " autocomplete with ->  
+" let OmniCpp_MayCompleteScope = 1 " autocomplete with ::  
+" let OmniCpp_SelectFirstItem = 2   
+" let OmniCpp_NamespaceSearch = 2   
+" let OmniCpp_ShowPrototypeInAbbr = 1   
+" let OmniCpp_GlobalScopeSearch=1  
+" let OmniCpp_DisplayMode=1  
+" let OmniCpp_DefaultNamespaces=["std"]  
+
+" OmniCppComplete
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+" automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest,preview
 
 " -----------------------------------------------------------------------------
 "  < powerline 插件配置 >
@@ -1009,6 +1122,31 @@ endif
 "| 1   | 2   |
 "| one | two |
 "可执行 :Tab /|
+"如果想把第50行到55行按等号对齐,则可以执行 :50,55Tab /=
+"如果想把当前行下5行按等号对齐,可以在normal模式下先输入5,然后再输入:Tab /=,变成如下命令执行
+":.,.+4Tab \=
+"甚至你还可以先在visual模式下选择好文本,再输入:Tab /=,把选定行按等号对齐 
+"if exists(":Tabularize")
+	nmap tab= :Tabularize /=<cr>
+	vmap tab= :Tabularize /=<cr>
+	nmap tab<Bar>  :Tabularize /<Bar><cr>
+	vmap tab<Bar>  :Tabularize /<Bar><cr>
+	nmap tab: :Tabularize /:\zs<cr>
+	vmap tab: :Tabularize /:\zs<cr>
+"endif
+
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
 
 " -----------------------------------------------------------------------------
 "  < vim-markdown 插件配置 >
@@ -1053,6 +1191,25 @@ let g:vim_markdown_frontmatter=1
 ":Bgrep 	[<grep_options>] [<search_pattern>]
 ":GrepArgs 	[<grep_options>] [<search_pattern>]
 nnoremap <F3> :Grep<CR>
+
+" -----------------------------------------------------------------------------
+"  < code_complete 插件配置 >
+" -----------------------------------------------------------------------------
+" http://blog.csdn.net/swust_long/article/details/7014180
+" 功能说明：
+" 1.输入函数名后在输入(，然后按tab键就可以显示函数行参
+" 2.常用语句if，while，switch等，输入后，按tab键就行
+" 3.输入in后按tab，就是#include " "
+" 4.输入is后按tab，就是#include < >
+" 5.输入main后按tab，就是上图所示的那样，main函数就好了
+" 6.输入cc后按tab，就是上图中的注释
+" 7.输入ff后按tab，就是上图中的头文件，预处理宏
+" 8.输入de后按tab，就是宏定义
+
+" -----------------------------------------------------------------------------
+"  < cca 插件配置 >
+" -----------------------------------------------------------------------------
+" code_complete_again: a complete plugin mixed the code_complete and snippetsEmu
 
 " =============================================================================
 "                          << 以下为常用工具配置 >>
@@ -1108,6 +1265,8 @@ set tags+=./tags "add current directory's generated tags file
 set tags=/usr/src/tags; 
 
 set tags=/usr/include/tags;
+
+set tags+=~/.vim/tags/cpp
 
 
 " -----------------------------------------------------------------------------
