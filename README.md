@@ -161,6 +161,7 @@ Open vim and run command
 ### javacomplete
 
     <C-X><C-U>
+
     <C-S-Space>
 
 ### MiniBufExplorer
@@ -289,9 +290,9 @@ Open vim and run command
 
 以下为本人自定义快捷键
 
-    tab=  // :Tabularize /=
-    tab<Bar>  // :Tabularize /<Bar>
-    tab:  // :Tabularize /:\zs
+    tab=        // :Tabularize /=
+    tab<Bar>    // :Tabularize /<Bar>
+    tab:        // :Tabularize /:\zs
 
 ### vim-markdown
 
@@ -300,8 +301,6 @@ Open vim and run command
     mdtab
 
 ### Visual-Mark
-
-书签插件
 
 标记书签
 
@@ -368,14 +367,15 @@ Open vim and run command
 ### code_complete
 
 功能说明：
-*输入函数名后在输入(，然后按tab键就可以显示函数行参
-*常用语句if，while，switch等，输入后，按tab键就行
-*输入in后按tab，就是#include " "
-*输入is后按tab，就是#include < >
-*输入main后按tab，就是上图所示的那样，main函数就好了
-*输入cc后按tab，就是上图中的注释
-*输入ff后按tab，就是上图中的头文件，预处理宏
-*输入de后按tab，就是宏定义
+
+-   输入函数名后在输入(，然后按tab键就可以显示函数行参
+-   常用语句if，while，switch等，输入后，按tab键就行
+-   输入in后按tab，就是#include " "
+-   输入is后按tab，就是#include < >
+-   输入main后按tab，就是上图所示的那样，main函数就好了
+-   输入cc后按tab，就是上图中的注释
+-   输入ff后按tab，就是上图中的头文件，预处理宏
+-   输入de后按tab，就是宏定义
 
 ### cscope
 
