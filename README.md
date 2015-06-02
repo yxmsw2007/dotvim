@@ -17,7 +17,7 @@ Open vim and run command
 
 ### Leader
 
->   ，
+-   ，
 
 ### 开关当前行折叠
 
