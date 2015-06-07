@@ -127,7 +127,7 @@ if g:islinux
     call vundle#begin()
 else
     set rtp+=$VIM/vimfiles/bundle/Vundle.vim
-    call vundle#begin('$VIM/vimfiles/Vundle.vim')
+    call vundle#begin('$VIM/vimfiles/bundle/Vundle.vim')
 endif
 
 " 使用Vundle来管理插件，这个必须要有。
