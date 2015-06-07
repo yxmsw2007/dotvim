@@ -13,7 +13,7 @@ Open vim and run command
 
 ##  Customize shortcut keys
 
-<CR>代表回车，<C-m>中的C代表Ctrl， <S-n>中的S代表Shift，<M-?>中的M代表Alt，<BS>代表后退键
+	<CR>代表回车，<C-m>中的C代表Ctrl， <S-n>中的S代表Shift，<M-?>中的M代表Alt，<BS>代表后退键
 
 ### Leader
 
@@ -223,6 +223,48 @@ Open vim and run command
 有目录树结构的文件浏览插件
 
     nt
+	
+以下命令只能在nerdtree窗口中执行
+	
+修改当前目录为目录树根目录
+
+	C
+	
+刷新当前目录
+
+	r
+	
+刷新目录树根目录
+
+	R
+	
+显示菜单
+
+	m
+
+此命令相当于在文件夹上右键显示的菜单，菜单内容如下
+	
+```vim
+
+NERDTree Menu. Use j/k/enter and the shortcuts indicated
+==========================================================
+> (a)dd a clildnode
+	(m)ove the current node
+	(d)elete the current node
+
+```
+
+退出菜单
+
+	Esc
+	
+修改当前选择目录为工作目录
+
+	cd
+	
+修改目录树根目录为工作目录
+
+	CD
 
 ### repeat
 
