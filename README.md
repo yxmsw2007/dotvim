@@ -2,15 +2,30 @@
 
 ## Installation
 
+rename the folder
+
+    $mv dotvim .vim
+    
+>> 注意：如果平台不一样请先删除dotvim/bundle下的内容(一般打开vim会出现以下错误信息)
+
+>> BundleInstall 的时候竟然显示未定义的函数 vundle#install#new错误
+
+安装插件管理工具Vundle
+
+    $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 Copy .vimrc to your home path.
 
-    $cd dotvim
+    $cd .vim
     $cp .vimrc ~
 
 Open vim and run command
 
     :PluginInstall
+    
+## 
 
+    
 ##  Customize shortcut keys
 
 	<CR>代表回车，<C-m>中的C代表Ctrl， <S-n>中的S代表Shift，<M-?>中的M代表Alt，<BS>代表后退键
