@@ -279,6 +279,21 @@ imap <c-h> <Left>
 " Ctrl + L 插入模式下光标向右移动
 imap <c-l> <Right>
 
+" 快速移动快捷键
+nmap <M-h> 10h
+
+nmap <M-j> 10j
+
+nmap <M-k> 10k
+
+nmap <M-l> 10l
+
+nmap <M-w> 3w
+
+nmap <M-e> 3e
+
+nmap <M-b> 3b
+
 " 启用每行超过80列的字符提示（字体变蓝并加下划线），不启用就注释掉
 au BufWinEnter * let w:m2=matchadd('Underlined', '\%>' . 80 . 'v.\+', -1)
 
