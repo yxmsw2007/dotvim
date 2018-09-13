@@ -131,6 +131,20 @@ Open vim and run command
     {nr} CTRL-W -    使得当前窗口高度减  {nr} (默认值是 1)
     
     {nr} CTRL-W +    使得当前窗口高度加  {nr} (默认值是 1)
+    
+### 分割窗口
+
+    CTRL+W+S 水平分割窗口
+    
+    CTRL+W+V 垂直分割窗口
+    
+    CTRL+W+N 新建窗口
+    
+    CTRL+W+C 关闭窗口
+
+    CTRL+W+O 关闭其他窗口，保留当前窗口
+
+    CTRL+W+q 关闭当前窗口
 
 ### 可视化模式操作
 
