@@ -201,7 +201,7 @@ Plugin 'vim-scripts/JavaScript-syntax'
 Plugin 'jQuery'
 Plugin 'othree/html5.vim'
 Plugin 'genutils'
-Plugin 'multiselect'
+Plugin 'terryma/vim-multiple-cursors'
 
 "vundle结束
 call vundle#end()
@@ -300,12 +300,20 @@ au BufWinEnter * let w:m2=matchadd('Underlined', '\%>' . 80 . 'v.\+', -1)
 "<leader>c复制
 vmap <leader>c "yy
 
+"<leader>y操作系统复制
+nmap <leader>y "+y
+vmap <leader>y "+y
+
 "剪切
 vmap <leader>x "yd
 
 "粘贴
 nmap <leader>v "yp
 vmap <leader>v "yp
+
+"<leader>p操作系统粘贴
+nmap <leader>p "+p
+vmap <leader>p "+p
 
 "全选
 nmap <leader>a ggvG$
