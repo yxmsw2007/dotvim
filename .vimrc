@@ -200,7 +200,6 @@ Plugin 'code_complete'
 Plugin 'vim-scripts/JavaScript-syntax'
 Plugin 'jQuery'
 Plugin 'othree/html5.vim'
-Plugin 'genutils'
 Plugin 'terryma/vim-multiple-cursors'
 
 "vundle结束
