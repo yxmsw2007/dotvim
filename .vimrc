@@ -1266,6 +1266,89 @@ nnoremap <F3> :Grep<CR>
 " let g:html5_microdata_attributes_complete = 0
 " let g:html5_aria_attributes_complete = 0
 
+
+" -----------------------------------------------------------------------------
+"  < vim-multiple-cursors 插件配置 >
+" -----------------------------------------------------------------------------
+" 多光标同时操作
+" example:"https://github.com/terryma/vim-multiple-cursors/wiki/Keystrokes-for-example-gifs"
+" start: <C-n> start multicursor and add a virtual cursor + selection on the match
+" next: <C-n> add a new virtual cursor + selection on the next match
+" skip: <C-x> skip the next match
+" prev: <C-p> remove current virtual cursor + selection and go back on previous match
+" select all: <A-n> start muticursor and directly select all matches
+
+
+" -----------------------------------------------------------------------------
+"  < ag.vim 插件配置 >
+" -----------------------------------------------------------------------------
+" :h Ag 查看帮助文档
+" :Ag [options] {pattern} [{directory}]
+" 例如查找:#define foo可以写成
+" :Ag '\\\#define foo'  
+" 指定ag路径以及重新定义别名
+" let g:ag_prg="<custom-ag-path-goes-here> --vimgrep" 
+" 指定ag搜索路径为工作路径而不是当前路径
+" let g:ag_working_path_mode="r"
+" quickfix window操作快捷键
+" e    to open file and close the quickfix window
+" o    to open (same as enter)
+" go   to preview file (open but maintain focus on ag.vim results)
+" t    to open in new tab
+" T    to open in new tab silently
+" h    to open in horizontal split
+" H    to open in horizontal split silently
+" v    to open in vertical split
+" gv   to open in vertical split silently
+" q    to close the quickfix window
+" 
+" let g:ag_prg="<custom-ag-path-goes-here> --vimgrep"
+let g:ag_working_path_mode="r"
+
+
+" -----------------------------------------------------------------------------
+"  < vim-action-ag 插件配置 >
+" -----------------------------------------------------------------------------
+" ag插件的增强版 
+" Normal Mode
+"    gagiw to search the word
+"    gagi' to search the words inside single quotes.
+" Visual Mode
+"    gag to search the selected text
+" use * to search current word in normal mode
+"   nmap * <Plug>AgActionWord
+" use * to search selected text in visual mode
+"   vmap * <Plug>AgActionVisual
+" *快捷键冲突  
+" nmap * <Plug>AgActionWord
+" vmap * <Plug>AgActionVisual
+
+
+" -----------------------------------------------------------------------------
+"  < limelight.vim 插件配置 >
+" -----------------------------------------------------------------------------
+" 关灯插件 
+nmap <Leader>l <Plug>(Limelight)
+xmap <Leader>l <Plug>(Limelight)
+
+
+" -----------------------------------------------------------------------------
+"  < lvim-expand-region 插件配置 >
+" -----------------------------------------------------------------------------
+" 默认快捷键 "+""-" 
+map <Leader>k <Plug>(expand_region_expand)
+map <Leader>j <Plug>(expand_region_shrink)
+
+
+" -----------------------------------------------------------------------------
+"  < vim-smooth-scroll 插件配置 >
+" -----------------------------------------------------------------------------
+" 平滑滚动插件  
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
 " =============================================================================
 "                          << 以下为常用工具配置 >>
 " =============================================================================
