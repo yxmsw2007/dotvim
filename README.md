@@ -675,10 +675,6 @@ select all(start muticursor and directly select all matches)
 
     gag 例如:gagiw gagi'
 
-快捷键
-
-    <Leader>*
-
 ### limelight(需要主题支持)
 
     <Leader>l 
