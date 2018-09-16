@@ -1332,13 +1332,6 @@ let g:ag_working_path_mode="r"
 "    gagi' to search the words inside single quotes.
 " Visual Mode
 "    gag to search the selected text
-" use * to search current word in normal mode
-"   nmap * <Plug>AgActionWord
-" use * to search selected text in visual mode
-"   vmap * <Plug>AgActionVisual
-" *快捷键冲突  
-" nmap * <Plug>AgActionWord
-" vmap * <Plug>AgActionVisual
 
 
 " -----------------------------------------------------------------------------
