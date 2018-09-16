@@ -96,7 +96,13 @@ Open vim and run command
 
 ### 复制
 
+vim内部复制
+
     <leader>c
+
+系统复制
+
+    <leader>y
 
 ### 剪切
 
@@ -104,7 +110,23 @@ Open vim and run command
 
 ### 粘贴
 
+vim内部粘贴
+
     <leader>v
+
+系统粘贴
+
+    <leader>p
+
+### 插入模式下粘贴
+
+vim内部粘贴
+
+    <C-r>+0或"
+
+系统粘贴
+
+    <C-r>++
 
 ### 全选
 
@@ -132,6 +154,16 @@ Open vim and run command
     
     {nr} CTRL-W +    使得当前窗口高度加  {nr} (默认值是 1)
     
+    ctrl+w+(h/j/k/l) 鼠标在各个窗口间循环移动
+
+    ctrl_w+(r/R)     窗口本身顺时针 (向下, 向右)移动, R则是逆时针移动
+
+    ctrl_w+x:        左右上下对应位置的窗口对调. 窗口必须是对应的, 否则将无法对换, 比如左边一个大窗口, 右边有两个小的子窗口, 不能左右互换
+
+    Ctrl_w+(HJKL)    H和L是向左或向右最大化贴边显示;而JK则是向上或向下贴边最大化显示.最大化后无法复原窗口
+
+    ctrl+w+(q/c/o)   窗口关闭q(quit)/c(close)关闭当前窗口,o(other)关闭其它窗口
+
 ### 分割窗口
 
     CTRL+W+S 水平分割窗口
@@ -140,12 +172,6 @@ Open vim and run command
     
     CTRL+W+N 新建窗口
     
-    CTRL+W+C 关闭窗口
-
-    CTRL+W+O 关闭其他窗口，保留当前窗口
-
-    CTRL+W+q 关闭当前窗口
-
 ### 可视化模式操作
 
     v 进入字符可视化模式
@@ -178,9 +204,9 @@ Open vim and run command
     
 ### 移动操作
 
-    （ 将光标移到当前或上一句子的开头
+    ( 将光标移到当前或上一句子的开头
     
-    ） 将光标移到下一句子的开头
+    ）将光标移到下一句子的开头
     
     { 将光标移到当前/上一段落的开头
     
@@ -391,19 +417,19 @@ Open vim and run command
 	
 修改当前目录为目录树根目录
 
-	C
+    C
 	
 刷新当前目录
 
-	r
+    r
 	
 刷新目录树根目录
 
-	R
+    R
 	
 显示菜单
 
-	m
+    m
 
 此命令相当于在文件夹上右键显示的菜单，菜单内容如下
 	
@@ -419,15 +445,35 @@ NERDTree Menu. Use j/k/enter and the shortcuts indicated
 
 退出菜单
 
-	Esc
+    Esc
 	
 修改当前选择目录为工作目录
 
-	cd
+    cd
 	
 修改目录树根目录为工作目录
 
-	CD
+    CD
+
+显示隐藏文件
+
+    I
+
+Bookmarks开关(显示所有Bookmarks)
+
+    B
+
+显示隐藏文件
+
+    I
+
+标记Bookmark
+
+    :Bookmark [<name>]
+
+删除Bookmark
+
+    :ClearBookmarks [<name>]
 
 ### repeat
 
@@ -439,8 +485,23 @@ NERDTree Menu. Use j/k/enter and the shortcuts indicated
 
     src
 
-### Tagbar
+### surround
 
+替换
+
+    cs 例如: cs"', "Hello world!"改成'Hello world!'
+
+删除
+    
+    ds 例如: ds", "Hello world!"改成Hello world!
+
+添加
+    
+    ys 例如(单词加双引号): ysiw", Hello world!改成"Hello" world!
+         或(句子加双引号): yss"， Hello world!改成"Hello world!"
+
+### Tagbar
+           
     tb
 
 ### TagList
@@ -581,6 +642,64 @@ NERDTree Menu. Use j/k/enter and the shortcuts indicated
 -   输入cc后按tab，就是上图中的注释
 -   输入ff后按tab，就是上图中的头文件，预处理宏
 -   输入de后按tab，就是宏定义
+
+### vim-multiple-cursors(多光标同时操作) 
+
+example:"https://github.com/terryma/vim-multiple-cursors/wiki/Keystrokes-for-example-gifs"
+
+start(start multicursor and add a virtual cursor + selection on the match)
+
+    <C-n> 
+
+next(add a new virtual cursor + selection on the next match)
+
+    <C-n> 
+
+skip(skip the next match)
+
+    <C-x> 
+
+prev(remove current virtual cursor + selection and go back on previous match)
+
+    <C-p> 
+
+select all(start muticursor and directly select all matches)
+
+    <A-n> 
+
+### ag
+
+    :Ag [options] {pattern} [{directory}]
+
+### vim-action-ag 
+
+    gag 例如:gagiw gagi'
+
+快捷键
+
+    <Leader>*
+
+### limelight(需要主题支持)
+
+    <Leader>l 
+
+### lvim-expand-region
+
+    +/-
+
+    <Leader>k
+
+    <Leader>j
+
+### vim-smooth-scroll
+
+    <c-u>
+    
+    <c-d>
+    
+    <c-b>
+    
+    <c-f>
 
 ### cscope
 

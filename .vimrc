@@ -187,6 +187,7 @@ Plugin 'TxtBrowser'
 Plugin 'ZoomWin'
 Plugin 'mbbill/undotree'
 Plugin 'godlygeek/tabular'
+" Plugin 'gjunegunn/vim-easy-align'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'minibufexpl.vim'
 Plugin 'Visual-Mark'
@@ -201,6 +202,11 @@ Plugin 'vim-scripts/JavaScript-syntax'
 Plugin 'jQuery'
 Plugin 'othree/html5.vim'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'rking/ag.vim'
+Plugin 'Chun-Yang/vim-action-ag'
+Plugin 'junegunn/limelight.vim'
+Plugin 'terryma/vim-expand-region'
+Plugin 'terryma/vim-smooth-scroll'
 
 "vundle结束
 call vundle#end()
@@ -280,18 +286,25 @@ imap <c-l> <Right>
 
 " 快速移动快捷键
 nmap <M-h> 10h
+vmap <M-h> 10h
 
 nmap <M-j> 10j
+vmap <M-j> 10j
 
 nmap <M-k> 10k
+vmap <M-k> 10k
 
 nmap <M-l> 10l
+vmap <M-l> 10l
 
 nmap <M-w> 3w
+vmap <M-w> 3w
 
 nmap <M-e> 3e
+vmap <M-e> 3e
 
 nmap <M-b> 3b
+vmap <M-b> 3b
 
 " 启用每行超过80列的字符提示（字体变蓝并加下划线），不启用就注释掉
 au BufWinEnter * let w:m2=matchadd('Underlined', '\%>' . 80 . 'v.\+', -1)
@@ -1088,6 +1101,10 @@ let c_cpp_comments = 0
 " -----------------------------------------------------------------------------
 " 快速给单词/句子两边增加符号（包括html标签），缺点是不能用"."来重复命令
 " 不过 repeat 插件可以解决这个问题，详细帮助见 :h surround.txt
+" 替换: cs 例如: cs"', "Hello world!"改成'Hello world!'
+" 删除: ds 例如: ds", "Hello world!"改成Hello world!
+" 添加: ys 例如(单词加双引号): ysiw", Hello world!改成"Hello" world!
+"            或(句子加双引号): yss"， Hello world!改成"Hello world!"
 
 " -----------------------------------------------------------------------------
 "  < Syntastic 插件配置 >
